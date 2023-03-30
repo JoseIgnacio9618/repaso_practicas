@@ -23,20 +23,20 @@ use Doctrine\DBAL\Schema\Index;
 Route::get('/', HomeController::class);
 
 
-Route::get('cursos', [CursoController::class, 'index'] );
+Route::get('cursos', [CursoController::class, 'index'] )->name('cursos');
 
 //Debe ir arriba para que no tome create como parametro de la ruta de cursos
-Route::get('cursos/create', [CursoController::class, 'create']);
+Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
 
 //Asi se pasa una variable por la url si se pone ? al final se esta indicando que la
 //variable es opcional
-Route::get('cursos/{curso}', [CursoController::class, 'show']);
+Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');
 
 
 //Asi se crean grupos de rutas en este caso hemos dupicado las que ya hemos hecho
 
 Route::controller(CursoController::class)->group(function(){
-    Route::get('cursos', 'index' );
-    Route::get('cursos/create', 'create');
-    Route::get('cursos/{curso}','show');
+    Route::get('cursos', 'index' )->name('cursos');
+    Route::get('cursos/create', 'create')->name('cursos.create');
+    Route::get('cursos/{id}','show')->name('cursos.show');
 });

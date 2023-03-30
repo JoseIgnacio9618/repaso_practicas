@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('name',255);//para mas de 256 caracteres
+            $table->string('email')->unique();//Para registros unicos
+            $table->timestamp('email_verified_at')->nullable();//Para guardar fehchas
+            //nullable es para campos que pueden quedar vacios
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->rememberToken() ;
+            $table->timestamps();// Crea dos columnas created _at para cuando se creo el registro u updated_at para la ultima vez que se modifico
         });
     }
 
