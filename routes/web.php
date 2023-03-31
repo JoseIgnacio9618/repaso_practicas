@@ -38,5 +38,10 @@ Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.sho
 Route::controller(CursoController::class)->group(function(){
     Route::get('cursos', 'index' )->name('cursos');
     Route::get('cursos/create', 'create')->name('cursos.create');
+    Route::post('crearCurso', 'newCurso')->name('create.curso');
+    Route::get('cursos/editCurso/{id}', 'editCurso')->name('cursos.edit');
+    Route::post('cursos/editCurso', 'modificateCurso')->name('curso.update');
     Route::get('cursos/{id}','show')->name('cursos.show');
+
+
 });
